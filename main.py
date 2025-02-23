@@ -1,17 +1,12 @@
-def get_book_text(filepath):
-    file_contents = ""
-
-    with open(filepath) as f:
-        file_contents = f.read()
-    
-    return file_contents
+from stats import count_words
 
 def main():
-
-    import os
-    print(os.getcwd())  # prints the Current Working Directory
-
     frankestein_path = "books/frankenstein.txt"
-    print(get_book_text(frankestein_path))
+    text = get_book_text(frankestein_path)
+    print(f"{count_words(text)} words found in the document")
+
+def get_book_text(filepath):
+    with open(filepath) as f:
+        return f.read()
 
 main()
