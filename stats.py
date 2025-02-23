@@ -11,3 +11,6 @@ def count_characters(text):
         else:
             occurences[c] = 1
     return occurences
+
+def order_characters(occ_dict):
+    return dict(sorted(occ_dict.items(), key=lambda item: item[1], reverse=True))
