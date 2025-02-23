@@ -1,3 +1,4 @@
+import sys
 from stats import (
     count_words, 
     count_characters,
@@ -5,13 +6,16 @@ from stats import (
 )
 
 def main():
-    book_path = "books/frankenstein.txt"
-    text = get_book_text(book_path)
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    
+    text = get_book_text(sys.argv[1])
     num_words = count_words(text)
     num_chars = count_characters(text)
     ordered_num_chars = order_characters(num_chars)
 
-    print_report(book_path, num_words, ordered_num_chars)
+    print_report(sys.argv[1], num_words, ordered_num_chars)
 
 def get_book_text(filepath):
     with open(filepath) as f:
